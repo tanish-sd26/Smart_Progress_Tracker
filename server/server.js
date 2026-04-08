@@ -85,6 +85,9 @@ app.get('/api/health', (req, res) => {
     });
 });
 
+app.get("/", (req, res) => {
+    res.send("🚀 Smart Progress Tracker API is LIVE!");
+}); 
 // ============================================
 // 404 HANDLER
 // ============================================
