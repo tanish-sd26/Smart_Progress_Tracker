@@ -111,15 +111,13 @@ Composite score from skills, projects, consistency
 
 ### 🏗️ Architecture
 
-User ➡️ Task Logger ➡️  MongoDB
-                   ➡️       
-              Progress Engine (Weighted Calculation)
-                   ➡️                                                                                                                                            
-              Skill Analyzer + Consistency Tracker
-                   ➡️       
-              Charts + Insights + Job Readiness Score
-                   ➡️     
-              React Dashboard (Visual Output)
+User 
+➡️ Task Logger 
+➡️  MongoDB
+➡️ Progress Engine (Weighted Calculation)
+➡️ Skill Analyzer + Consistency Tracker
+➡️ Charts + Insights + Job Readiness Score
+➡️ React Dashboard (Visual Output)
 
 ---
 
