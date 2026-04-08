@@ -111,12 +111,18 @@ Composite score from skills, projects, consistency
 
 ### 🏗️ Architecture
 
-User 
-➡️ Task Logger 
+User
+
+➡️ Task Logger
+
 ➡️  MongoDB
+
 ➡️ Progress Engine (Weighted Calculation)
+
 ➡️ Skill Analyzer + Consistency Tracker
+
 ➡️ Charts + Insights + Job Readiness Score
+
 ➡️ React Dashboard (Visual Output)
 
 ---
@@ -136,13 +142,14 @@ Weekly Progress = (Total Score / Expected Score) × 100
 
 ### 🎯 Job Readiness Score Components
 
-Component	             Weight
-Skill Coverage	        30%
-Skill Depth	            25%
-Project Work	          20%
-Consistency             15%
-Difficulty Level	      10%
 
+| Component           | Weight       |
+|---------------------|--------------|
+| Skill Coverage	    | 30%          |
+| Skill Depth         | 25%          |
+| Project Work        | 20%          |
+| Consistency         | 15%          |
+| Difficulty Level    | 10%          |
 ---
 
 ---
