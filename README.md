@@ -67,6 +67,7 @@ Task Score = (Actual Time) × (Difficulty Multiplier) × (Completion %)
 
 ## 🚀 Setup Instructions
 
+<<<<<<< Updated upstream
 ### Setup Backend
 
 cd server
@@ -86,6 +87,8 @@ http://localhost:5173
 
 ---
 
+=======
+>>>>>>> Stashed changes
 ### 📸 Screenshots
 # Dashboard
 Weekly progress, charts, skill distribution
