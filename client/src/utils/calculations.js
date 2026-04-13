@@ -1,6 +1,13 @@
 // ============================================
 // CLIENT-SIDE CALCULATIONS
 // ============================================
+// Backend logic ka mirror - client side pe bhi
+// same calculations kar sakte hain preview ke liye
+// Final calculations hamesha backend karega
+
+// ============================================
+// DIFFICULTY MULTIPLIERS
+// ============================================
 const DIFFICULTY_MULTIPLIER = {
     easy: 1.0,
     medium: 1.5,
@@ -19,6 +26,7 @@ const CATEGORY_BONUS = {
 // ============================================
 // CALCULATE SINGLE TASK SCORE
 // ============================================
+// Yeh formula system ka HEART hai
 // Task Score = (actualTime/60) × difficultyMultiplier × (completion/100) × categoryBonus
 //
 // Example:
@@ -133,6 +141,7 @@ export const calculateTimeEfficiency = (tasks) => {
 // ============================================
 // CALCULATE SKILL DISTRIBUTION
 // ============================================
+// Har skill mein kitna percentage time spend hua
 export const calculateSkillDistribution = (tasks) => {
     if (!tasks || tasks.length === 0) return [];
 
@@ -202,6 +211,7 @@ export const determineSkillStrength = (skill, allSkills) => {
 // ============================================
 // CALCULATE STREAK
 // ============================================
+// Continuous active days count karo
 // activeDays = array of { date, isActive } objects (sorted by date)
 export const calculateStreak = (dailyActivity) => {
     if (!dailyActivity || dailyActivity.length === 0) {
@@ -247,6 +257,7 @@ export const calculateConsistency = (activeDays, totalDays) => {
 // ============================================
 // ESTIMATE JOB READINESS (Client-Side Preview)
 // ============================================
+// Backend ka simplified version - quick preview ke liye
 export const estimateJobReadiness = (tasks, consistencyPercentage = 0) => {
     if (!tasks || tasks.length === 0) return 0;
 
@@ -287,6 +298,7 @@ export const estimateJobReadiness = (tasks, consistencyPercentage = 0) => {
 // ============================================
 // GET PROGRESS GRADE
 // ============================================
+// Percentage ke basis pe grade assign karo
 export const getProgressGrade = (percentage) => {
     if (percentage >= 80) return { 
         grade: 'A', label: 'Excellent', color: '#22c55e', emoji: '🏆' 

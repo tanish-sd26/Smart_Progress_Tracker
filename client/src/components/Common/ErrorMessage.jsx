@@ -2,7 +2,6 @@
 // ERROR MESSAGE COMPONENT
 // ============================================
 // Reusable error display component
-// Different types: error, warning, info, success
 
 import React from 'react';
 
