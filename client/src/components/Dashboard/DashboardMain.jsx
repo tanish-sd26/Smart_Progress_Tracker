@@ -1,7 +1,6 @@
 // ============================================
 // MAIN DASHBOARD COMPONENT
 // ============================================
-// Sab kuch ek jagah - overview of everything
 
 import React, { useState, useEffect } from 'react';
 import StatCard from '../Common/StatCard';

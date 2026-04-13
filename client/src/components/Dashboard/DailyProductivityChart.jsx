@@ -1,8 +1,6 @@
 // ============================================
 // DAILY PRODUCTIVITY CHART COMPONENT
 // ============================================
-// Ek din ke andar time-wise kaam ka breakdown
-// Kaunsa task kitna productive tha - visual form mein
 
 import React, { useState, useEffect } from 'react';
 import {
@@ -47,7 +45,7 @@ const DailyProductivityChart = ({ date = null }) => {
         }
     };
 
-    // Tasks ko chart-friendly format mein convert karo
+    // Tasks individual task bars and skill-wise aggregation
     const processTasksForChart = (tasks) => {
         // Individual task bars
         const taskBars = tasks.map(task => ({
@@ -102,7 +100,7 @@ const DailyProductivityChart = ({ date = null }) => {
         return { taskBars, skillBars, summary };
     };
 
-    // Difficulty ke basis pe bar color
+    // Difficulty basis bar color
     const getBarColor = (entry) => {
         if (entry.difficulty === 'hard') return '#ef4444';
         if (entry.difficulty === 'medium') return '#eab308';
@@ -110,7 +108,7 @@ const DailyProductivityChart = ({ date = null }) => {
         return '#6366f1'; // default for skill-wise
     };
 
-    // Score ke basis pe color
+    // color basis on scores
     const getScoreColor = (score) => {
         if (score >= 3) return '#22c55e';     // Green - high
         if (score >= 1.5) return '#6366f1';   // Purple - medium
