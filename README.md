@@ -2,19 +2,24 @@
 
 ## Measure Real Learning Progress, Not Just Activity
 
-A full-stack web application that tracks daily tasks and learning 
-activities to measure actual progress through weighted scoring, 
-skill analysis, consistency tracking, and job readiness assessment.
+A full-stack SaaS-style web application that tracks daily tasks and learning behavior to evaluate **actual skill growth, consistency, and job readiness** using a weighted scoring system.
+
+---
+
+## 🌐 Live Demo
+
+🚀 Frontend: https://smart-progress-tracker-black.vercel.app
+🔗 Backend API: https://smart-progress-tracker.onrender.com
 
 ---
 
 ## 🎯 Problem
 
 Traditional tools only track task completion. They don't tell you:
-- Are you actually improving?
-- Which skills are strong/weak?
-- Are you consistent?
-- Are you job-ready?
+- ❓ Are you actually improving?
+- ❓ Which skills are strong/weak?
+- ❓ Are you consistent?
+- ❓ Are you job-ready?
 
 ---
 
@@ -172,13 +177,6 @@ Weekly Progress = (Total Score / Expected Score) × 100
 - Smart recommendations  
 - Mobile app version  
 - Advanced analytics  
-
---- 
-
-## 🌐 Live Demo
-
-🚀 Frontend: https://smart-progress-tracker-black.vercel.app
-🔗 Backend API: https://smart-progress-tracker.onrender.com
 
 ---
 
