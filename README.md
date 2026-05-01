@@ -175,5 +175,12 @@ Weekly Progress = (Total Score / Expected Score) × 100
 
 --- 
 
+## 🌐 Live Demo
+
+🚀 Frontend: https://smart-progress-tracker-black.vercel.app
+🔗 Backend API: https://smart-progress-tracker.onrender.com
+
+---
+
 ### 📜 License
 MIT License
