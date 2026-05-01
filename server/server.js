@@ -1,9 +1,6 @@
 // ============================================
 // SMART PROGRESS TRACKER - MAIN SERVER FILE
 // ============================================
-// Yeh file application ka entry point hai
-// Express server setup, middleware configuration,
-// route mounting, aur error handling yahan hota hai
 
 const express = require('express');
 const cors = require('cors');
@@ -12,8 +9,6 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
 
-// Load environment variables from .env file
-// Yeh line .env file ke saare variables ko process.env mein daal deti hai
 dotenv.config();
 
 // Create Express application instance
@@ -22,8 +17,6 @@ const app = express();
 // ============================================
 // DATABASE CONNECTION
 // ============================================
-// MongoDB se connect karo using mongoose
-// Agar connection fail ho, server start nahi hoga
 connectDB();
 
 // ============================================
@@ -31,8 +24,7 @@ connectDB();
 // ============================================
 
 // CORS Configuration
-// Frontend (React on port 5173) ko backend se baat karne ki permission
-// Bina CORS ke browser cross-origin requests block kar dega
+
 app.use(cors({
     origin: process.env.CLIENT_URL || 'http://localhost:5173',
     credentials: true,
@@ -41,13 +33,10 @@ app.use(cors({
 }));
 
 // Body Parser Middleware
-// Request body mein aane wale JSON data ko parse karta hai
-// Bina iske req.body undefined rahega
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-// Morgan Logger - Development mein HTTP requests log karta hai
-// Terminal mein dikhega: GET /api/tasks 200 15ms
+// Terminal : GET /api/tasks 200 15ms
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
@@ -55,7 +44,6 @@ if (process.env.NODE_ENV === 'development') {
 // ============================================
 // API ROUTES
 // ============================================
-// Har route file ek specific feature handle karti hai
 
 // Auth Routes - Login, Register, Profile
 app.use('/api/auth', require('./routes/authRoutes'));
@@ -75,7 +63,6 @@ app.use('/api/analytics', require('./routes/analyticsRoutes'));
 // ============================================
 // HEALTH CHECK ROUTE
 // ============================================
-// Server alive hai ya nahi check karne ke liye
 app.get('/api/health', (req, res) => {
     res.status(200).json({
         success: true,
@@ -121,8 +108,6 @@ app.listen(PORT, () => {
     `);
 });
 
-// Handle unhandled promise rejections
-// Agar koi async error catch nahi hota toh server gracefully shutdown ho
 process.on('unhandledRejection', (err, promise) => {
     console.log(`❌ Unhandled Rejection: ${err.message}`);
     // Close server & exit process
