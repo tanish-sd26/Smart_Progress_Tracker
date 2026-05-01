@@ -8,7 +8,7 @@ A full-stack SaaS-style web application that tracks daily tasks and learning beh
 
 ## 🌐 Live Demo
 
-🚀 Frontend: https://smart-progress-tracker-black.vercel.app
+🚀 Frontend: https://smart-progress-tracker-black.vercel.app <br>
 🔗 Backend API: https://smart-progress-tracker.onrender.com
 
 ---
