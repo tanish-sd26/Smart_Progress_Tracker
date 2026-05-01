@@ -89,7 +89,6 @@ http://localhost:5173
 
 ---
 
-=======
 ### 📸 Screenshots
 # Dashboard
 Weekly progress, charts, skill distribution
@@ -154,7 +153,7 @@ Weekly Progress = (Total Score / Expected Score) × 100
 | Project Work        | 20%          |
 | Consistency         | 15%          |
 | Difficulty Level    | 10%          |
----
+
 
 ---
 
