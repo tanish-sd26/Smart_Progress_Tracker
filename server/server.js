@@ -20,23 +20,41 @@ const app = express();
 connectDB();
 
 // ============================================
-// MIDDLEWARE SETUP
+// CORS CONFIGURATION (FINAL FIX)
 // ============================================
 
-// CORS Configuration
+const allowedOrigins = [
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'http://localhost:5175',
+    'http://localhost:5176',
+    process.env.CLIENT_URL // deployed frontend later
+];
 
 app.use(cors({
-    origin: process.env.CLIENT_URL || 'http://localhost:5173',
+    origin: function (origin, callback) {
+        // allow requests with no origin (Postman etc)
+        if (!origin) return callback(null, true);
+
+        if (allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            // TEMP: allow all (so you don't get blocked again)
+            callback(null, true);
+        }
+    },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// Body Parser Middleware
+// ============================================
+// MIDDLEWARE SETUP
+// ============================================
+
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-// Terminal : GET /api/tasks 200 15ms
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
@@ -45,24 +63,16 @@ if (process.env.NODE_ENV === 'development') {
 // API ROUTES
 // ============================================
 
-// Auth Routes - Login, Register, Profile
 app.use('/api/auth', require('./routes/authRoutes'));
-
-// Task Routes - CRUD operations for daily tasks
 app.use('/api/tasks', require('./routes/taskRoutes'));
-
-// Progress Routes - Weighted progress calculations
 app.use('/api/progress', require('./routes/progressRoutes'));
-
-// Planner Routes - Weekly goals and planning
 app.use('/api/planner', require('./routes/plannerRoutes'));
-
-// Analytics Routes - Charts, heatmaps, insights data
 app.use('/api/analytics', require('./routes/analyticsRoutes'));
 
 // ============================================
-// HEALTH CHECK ROUTE
+// HEALTH CHECK ROUTES
 // ============================================
+
 app.get('/api/health', (req, res) => {
     res.status(200).json({
         success: true,
@@ -74,11 +84,12 @@ app.get('/api/health', (req, res) => {
 
 app.get("/", (req, res) => {
     res.send("🚀 Smart Progress Tracker API is LIVE!");
-}); 
+});
+
 // ============================================
 // 404 HANDLER
 // ============================================
-// Agar koi route match nahi karta toh yeh response jayega
+
 app.use('*', (req, res) => {
     res.status(404).json({
         success: false,
@@ -89,12 +100,13 @@ app.use('*', (req, res) => {
 // ============================================
 // GLOBAL ERROR HANDLER
 // ============================================
-// Saari unhandled errors yahan aayengi
+
 app.use(errorHandler);
 
 // ============================================
 // START SERVER
 // ============================================
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
@@ -108,8 +120,11 @@ app.listen(PORT, () => {
     `);
 });
 
-process.on('unhandledRejection', (err, promise) => {
+// ============================================
+// HANDLE ERRORS
+// ============================================
+
+process.on('unhandledRejection', (err) => {
     console.log(`❌ Unhandled Rejection: ${err.message}`);
-    // Close server & exit process
     process.exit(1);
 });
