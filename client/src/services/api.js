@@ -5,9 +5,12 @@
 
 import axios from 'axios';
 
+// Base URL - use environment variable if set, otherwise use proxy
+const baseURL = import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}/api` : '/api';
+
 // Base axios instance create karo
 const api = axios.create({
-    baseURL: '/api',           // Vite proxy handle karega
+    baseURL: baseURL,           // Vite proxy handle karega or external URL
     headers: {
         'Content-Type': 'application/json'
     },
