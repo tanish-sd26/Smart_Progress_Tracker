@@ -72,14 +72,11 @@ Task Score = (Actual Time) × (Difficulty Multiplier) × (Completion %)
 
 ## 🚀 Setup Instructions
 
-<<<<<<< Updated upstream
 ### Setup Backend
 
 cd server
 npm install
 > Create .env file with your MongoDB URI and JWT secret
-cp .env.example .env
-> Edit .env with your values
 npm run dev
 
 ### Setup Fronted
@@ -93,7 +90,6 @@ http://localhost:5173
 ---
 
 =======
->>>>>>> Stashed changes
 ### 📸 Screenshots
 # Dashboard
 Weekly progress, charts, skill distribution
