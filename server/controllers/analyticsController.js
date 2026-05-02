@@ -1,7 +1,6 @@
 // ============================================
 // ANALYTICS CONTROLLER
 // ============================================
-// Charts, heatmaps, insights ka data serve karta hai
 
 const SkillAnalyzer = require('../services/skillAnalyzer');
 const ConsistencyTracker = require('../services/consistencyTracker');

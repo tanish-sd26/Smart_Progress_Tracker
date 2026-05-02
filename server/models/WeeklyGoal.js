@@ -1,8 +1,6 @@
 // ============================================
 // WEEKLY GOAL MODEL
 // ============================================
-// User ke weekly planning goals store karta hai
-// Goal vs Actual comparison ke liye use hota hai
 
 const mongoose = require('mongoose');
 
@@ -33,13 +31,13 @@ const WeeklyGoalSchema = new mongoose.Schema({
             required: true,
             trim: true
         },
-        // Kitne hours plan kiye
+
         plannedHours: {
             type: Number,
             required: true,
             min: 0
         },
-        // Kitne tasks plan kiye
+
         plannedTasks: {
             type: Number,
             default: 0,
@@ -73,7 +71,7 @@ const WeeklyGoalSchema = new mongoose.Schema({
         default: 0
     },
 
-    // Week ka main focus area
+    // Weekly main focus area
     weeklyFocus: {
         type: String,
         trim: true,
@@ -90,7 +88,7 @@ const WeeklyGoalSchema = new mongoose.Schema({
     timestamps: true
 });
 
-// Compound index - ek user ke liye ek week mein ek hi goal
+// Compound index 
 WeeklyGoalSchema.index({ userId: 1, weekStartDate: 1 }, { unique: true });
 
 // Calculate expected score before saving

@@ -1,10 +1,6 @@
 // ============================================
 // AUTHENTICATION MIDDLEWARE
 // ============================================
-// Har protected route pe yeh middleware chalega
-// JWT token verify karega aur user ko req.user mein daalega
-// Token nahi hai ya invalid hai toh 401 error jayega
-
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
@@ -14,7 +10,6 @@ const protect = async (req, res, next) => {
     // ============================================
     // STEP 1: Token extract karo
     // ============================================
-    // Token Authorization header mein aata hai
     // Format: "Bearer <token>"
     if (
         req.headers.authorization && 
@@ -24,7 +19,6 @@ const protect = async (req, res, next) => {
         token = req.headers.authorization.split(' ')[1];
     }
 
-    // Agar token nahi mila toh unauthorized error
     if (!token) {
         return res.status(401).json({
             success: false,
@@ -34,17 +28,15 @@ const protect = async (req, res, next) => {
 
     try {
         // ============================================
-        // STEP 2: Token verify karo
+        // STEP 2: Token verification
         // ============================================
-        // jwt.verify() token ko secret key se decode karta hai
-        // Agar token tampered hai ya expired hai toh error throw hoga
+    
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
         // ============================================
         // STEP 3: User find karo database se
         // ============================================
-        // Token mein sirf user id hai, baaki info DB se laao
-        // .select('-password') means password field include mat karo
+       
         const user = await User.findById(decoded.id).select('-password');
 
         if (!user) {
@@ -57,10 +49,9 @@ const protect = async (req, res, next) => {
         // ============================================
         // STEP 4: User ko request mein attach karo
         // ============================================
-        // Ab aage ke route handlers mein req.user available hoga
         req.user = user;
 
-        // Next middleware/route handler pe jaao
+        // Next middleware/route handler 
         next();
 
     } catch (error) {

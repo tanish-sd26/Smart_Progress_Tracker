@@ -24,7 +24,6 @@ exports.register = async (req, res, next) => {
         }
 
         // Create new user
-        // Password automatically hash hoga pre-save middleware se
         const user = await User.create({
             name,
             email,
@@ -34,7 +33,7 @@ exports.register = async (req, res, next) => {
             dailyTargetHours: dailyTargetHours || 4
         });
 
-        // JWT token generate karo
+        // JWT token generate 
         const token = user.generateAuthToken();
 
         // Success response
@@ -68,9 +67,6 @@ exports.register = async (req, res, next) => {
 exports.login = async (req, res, next) => {
     try {
         const { email, password } = req.body;
-
-        // User find karo with password field
-        // .select('+password') because model mein select: false hai
         const user = await User.findOne({ email }).select('+password');
 
         if (!user) {

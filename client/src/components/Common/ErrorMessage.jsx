@@ -12,7 +12,7 @@ const ErrorMessage = ({
     onDismiss = null,
     className = '' 
 }) => {
-    // Type ke basis pe styling
+
     const typeStyles = {
         error: {
             bg: 'bg-red-500/10',
@@ -46,7 +46,6 @@ const ErrorMessage = ({
 
     const style = typeStyles[type] || typeStyles.error;
 
-    // Agar message nahi hai toh kuch mat dikhao
     if (!message) return null;
 
     return (
@@ -133,7 +132,6 @@ const ErrorMessage = ({
 // ============================================
 // EMPTY STATE COMPONENT
 // ============================================
-// Jab data nahi hota tab dikhane ke liye
 export const EmptyState = ({ 
     icon = '📭', 
     title = 'No data found',
@@ -167,7 +165,6 @@ export const EmptyState = ({
 // ============================================
 // NETWORK ERROR COMPONENT
 // ============================================
-// Jab API call fail ho jaye
 export const NetworkError = ({ onRetry }) => {
     return (
         <ErrorMessage

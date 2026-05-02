@@ -1,8 +1,6 @@
 // ============================================
 // TASK CONTROLLER
 // ============================================
-// CRUD operations for daily tasks
-// Yeh system ka primary data entry point hai
 
 const Task = require('../models/Task');
 
@@ -29,7 +27,7 @@ exports.createTask = async (req, res, next) => {
             date: new Date(req.body.date)
         };
 
-        // Task create karo - pre-save middleware score calculate karega
+        // Task create
         const task = await Task.create(taskData);
 
         res.status(201).json({
@@ -143,7 +141,7 @@ exports.getTask = async (req, res, next) => {
     try {
         const task = await Task.findOne({
             _id: req.params.id,
-            userId: req.user.id       // Security: sirf apne tasks dekho
+            userId: req.user.id       // Security
         });
 
         if (!task) {
@@ -195,7 +193,6 @@ exports.updateTask = async (req, res, next) => {
             }
         });
 
-        // Save karega toh pre-save middleware score recalculate karega
         await task.save();
 
         res.status(200).json({

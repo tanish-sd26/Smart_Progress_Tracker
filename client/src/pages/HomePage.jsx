@@ -1,7 +1,6 @@
 // ============================================
 // HOME PAGE COMPONENT
 // ============================================
-// Landing page - jab user logged in nahi hai
 // Features showcase, hero section, CTA buttons
 
 import React from 'react';
@@ -11,7 +10,6 @@ import { useAuth } from '../hooks/useAuth';
 const HomePage = () => {
     const { user } = useAuth();
 
-    // Agar user logged in hai toh dashboard pe redirect
     if (user) {
         return <Navigate to="/dashboard" />;
     }

@@ -1,9 +1,6 @@
 // ============================================
 // TASK GRID COMPONENT
 // ============================================
-// Calendar/Grid style view - rows = dates, columns = tasks
-// GitHub contributions graph jaisa visual experience
-// Click pe task detail open hogi
 
 import React, { useState, useEffect, useMemo } from 'react';
 import taskService from '../../services/taskService';

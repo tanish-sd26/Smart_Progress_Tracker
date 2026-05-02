@@ -1,8 +1,6 @@
 // ============================================
 // TASK DETAIL COMPONENT
 // ============================================
-// Ek task ka complete detail view - modal/panel style
-// Yahan se task edit aur update bhi kar sakte hain
 
 import React, { useState, useEffect } from 'react';
 import taskService from '../../services/taskService';
@@ -17,7 +15,6 @@ const TaskDetail = ({ taskId, task: initialTask, onClose, onTaskUpdated }) => {
     const [loading, setLoading] = useState(!initialTask);
     const [saving, setSaving] = useState(false);
 
-    // Agar task directly nahi diya toh ID se fetch karo
     useEffect(() => {
         if (!initialTask && taskId) {
             fetchTask();
@@ -37,7 +34,7 @@ const TaskDetail = ({ taskId, task: initialTask, onClose, onTaskUpdated }) => {
         }
     };
 
-    // Edit mode start karo
+    // Edit mode start
     const startEditing = () => {
         setEditData({
             title: task.title,

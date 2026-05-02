@@ -2,7 +2,6 @@
 // MAIN APP COMPONENT
 // ============================================
 // Routing aur layout setup
-// Protected aur public routes manage karta hai
 
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';

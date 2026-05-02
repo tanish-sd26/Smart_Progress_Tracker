@@ -10,7 +10,7 @@ const baseURL = import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}/
 
 // Base axios instance create karo
 const api = axios.create({
-    baseURL: baseURL,           // Vite proxy handle karega or external URL
+    baseURL: baseURL,           // Vite proxy handle or external URL
     headers: {
         'Content-Type': 'application/json'
     },
@@ -20,7 +20,6 @@ const api = axios.create({
 // ============================================
 // REQUEST INTERCEPTOR
 // ============================================
-// Har outgoing request mein JWT token automatically add karo
 api.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem('token');
@@ -37,7 +36,6 @@ api.interceptors.request.use(
 // ============================================
 // RESPONSE INTERCEPTOR
 // ============================================
-// Error responses handle karo
 api.interceptors.response.use(
     (response) => {
         // Successful response - data return karo

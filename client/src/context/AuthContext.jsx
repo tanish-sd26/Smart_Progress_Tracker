@@ -2,7 +2,7 @@
 // AUTH CONTEXT
 // ============================================
 // Global authentication state management
-// Login, logout, user info - sab centralized hai
+// Login, logout, user info 
 
 import React, { createContext, useState, useEffect } from 'react';
 import authService from '../services/authService';

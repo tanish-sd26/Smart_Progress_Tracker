@@ -1,7 +1,6 @@
 // ============================================
 // CUSTOM HOOK: useProgress
 // ============================================
-// Progress data fetch karne ka reusable hook
 
 import { useState, useEffect, useCallback } from 'react';
 import progressService from '../services/progressService';

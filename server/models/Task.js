@@ -1,9 +1,6 @@
 // ============================================
 // TASK MODEL
 // ============================================
-// System ka CORE data model - user ka har task yahan store hota hai
-// Skill tag, time tracking, difficulty, completion - sab yahan hai
-// Progress calculation ka raw data yahi hai
 
 const mongoose = require('mongoose');
 
@@ -24,7 +21,7 @@ const TaskSchema = new mongoose.Schema({
         maxlength: [200, 'Title cannot exceed 200 characters']
     },
 
-    // Task ka description (optional)
+    // Task ka description
     description: {
         type: String,
         trim: true,
@@ -32,8 +29,7 @@ const TaskSchema = new mongoose.Schema({
         default: ''
     },
 
-    // SKILL TAG - Yeh bahut important hai
-    // Progress skill-wise calculate hoga
+    // SKILL TAG
     // Example: "React", "Node.js", "DSA", "Python", "System Design"
     skill: {
         type: String,
@@ -48,7 +44,7 @@ const TaskSchema = new mongoose.Schema({
         default: 'learning'
     },
 
-    // PLANNED TIME - User ne kitna time plan kiya tha (minutes mein)
+    // PLANNED TIME 
     plannedTime: {
         type: Number,
         required: [true, 'Planned time is required'],
@@ -56,8 +52,7 @@ const TaskSchema = new mongoose.Schema({
         max: [720, 'Maximum 12 hours (720 minutes)']
     },
 
-    // ACTUAL TIME - Actually kitna time laga (minutes mein)
-    // Initially 0 hoga, task complete karne ke baad update hoga
+    // ACTUAL TIME 
     actualTime: {
         type: Number,
         default: 0,
@@ -66,7 +61,7 @@ const TaskSchema = new mongoose.Schema({
     },
 
     // DIFFICULTY LEVEL - Progress calculation mein weight deta hai
-    // Hard tasks ka score zyada hoga
+   
     difficulty: {
         type: String,
         enum: ['easy', 'medium', 'hard'],
@@ -75,7 +70,7 @@ const TaskSchema = new mongoose.Schema({
     },
 
     // COMPLETION PERCENTAGE - 0 to 100
-    // User khud set karega ki kitna complete hua
+    
     completion: {
         type: Number,
         default: 0,
@@ -91,7 +86,7 @@ const TaskSchema = new mongoose.Schema({
     },
 
     // QUALITY RATING - Self assessment (1-5 stars)
-    // Optional but helps in better progress calculation
+    
     qualityRating: {
         type: Number,
         min: 1,
@@ -99,7 +94,7 @@ const TaskSchema = new mongoose.Schema({
         default: null
     },
 
-    // NOTES - Task ke baare mein additional notes
+    // NOTES - 
     notes: {
         type: String,
         maxlength: [500, 'Notes cannot exceed 500 characters'],
@@ -110,10 +105,10 @@ const TaskSchema = new mongoose.Schema({
     date: {
         type: Date,
         required: [true, 'Task date is required'],
-        index: true            // Date-wise queries fast hongi
+        index: true            
     },
 
-    // CALCULATED SCORE - Backend calculate karega
+    // CALCULATED SCORE - 
     // Formula: (actualTime / 60) × difficultyMultiplier × (completion / 100)
     taskScore: {
         type: Number,
@@ -121,22 +116,18 @@ const TaskSchema = new mongoose.Schema({
     }
 }, {
     // Schema options
-    timestamps: true           // createdAt aur updatedAt automatically add hoga
+    timestamps: true           // createdAt aur updatedAt automatically
 });
 
 // ============================================
 // COMPOUND INDEX
 // ============================================
-// User + Date ke combination pe fast query hogi
-// Jab weekly/daily tasks fetch karna ho
 TaskSchema.index({ userId: 1, date: -1 });
 TaskSchema.index({ userId: 1, skill: 1 });
 
 // ============================================
 // PRE-SAVE MIDDLEWARE - CALCULATE TASK SCORE
 // ============================================
-// Jab bhi task save ho, automatically score calculate karo
-// Yeh WEIGHTED PROGRESS SYSTEM ka core formula hai
 
 TaskSchema.pre('save', function(next) {
     // Difficulty multiplier mapping

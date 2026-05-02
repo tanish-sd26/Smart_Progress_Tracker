@@ -1,10 +1,6 @@
 // ============================================
 // PROGRESS SNAPSHOT MODEL
 // ============================================
-// Weekly/Monthly progress snapshots store karta hai
-// Yeh long-term trends track karne ke liye hai
-// Har week end pe ek snapshot save hota hai
-
 const mongoose = require('mongoose');
 
 const ProgressSnapshotSchema = new mongoose.Schema({
@@ -14,7 +10,7 @@ const ProgressSnapshotSchema = new mongoose.Schema({
         required: true
     },
 
-    // Snapshot kis period ka hai
+    // Snapshot period type: daily, weekly, monthly
     periodType: {
         type: String,
         enum: ['daily', 'weekly', 'monthly'],
@@ -81,7 +77,7 @@ const ProgressSnapshotSchema = new mongoose.Schema({
 
     // ===== CONSISTENCY METRICS =====
     consistency: {
-        // Kitne din kaam kiya
+    
         activeDays: {
             type: Number,
             default: 0

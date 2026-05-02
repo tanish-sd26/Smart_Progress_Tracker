@@ -1,7 +1,7 @@
 // ============================================
 // TASK LOGGER COMPONENT
 // ============================================
-// Daily task entry form - system ka primary input
+// Daily task entry form
 
 import React, { useState } from 'react';
 import taskService from '../../services/taskService';

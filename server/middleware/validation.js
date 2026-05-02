@@ -1,15 +1,12 @@
 // ============================================
 // REQUEST VALIDATION MIDDLEWARE
 // ============================================
-// express-validator use karke incoming data validate karo
-// Invalid data database tak pahunchne se pehle hi rok lo
 
 const { body, validationResult } = require('express-validator');
 
 // ============================================
 // Validation result check karne wala middleware
 // ============================================
-// Yeh har validation chain ke baad lagta hai
 const handleValidationErrors = (req, res, next) => {
     const errors = validationResult(req);
     

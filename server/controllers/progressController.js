@@ -1,8 +1,6 @@
 // ============================================
 // PROGRESS CONTROLLER
 // ============================================
-// Progress calculations serve karta hai
-// ProgressEngine service use karta hai
 
 const ProgressEngine = require('../services/progressEngine');
 
